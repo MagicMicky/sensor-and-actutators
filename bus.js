@@ -18,14 +18,24 @@ mqttClient.on('connect', () => {
 
 })
 
+const parseMsg = (msg) => {
+  try {
+    return JSON.parse(msg.toString())
+  } catch(err) {
+    console.log("Msg is not a valid json")
+  }
+  return null;
+}
+
 mqttClient.on('message', (topic, msg) => {
-  if(topic === SENSOR_TOPIC) {
-    console.log("[+] Received info from "+ msg.sensorID +":"+ msg.value +"("+ msg.type +")")
+  const msgObject = parseMsg(msg)
+  if(topic === SENSOR_TOPIC && msgObject) {
+    console.log("[+] Received info from "+ msgObject.sensorID +":"+ msgObject.value +"("+ msgObject.type +")")
     if(sensorListener) {
-      sensorListener(msg)
+      sensorListener(msgObject)
     }
   } else {
-    console.log("[+] Received info on "+ topic +":"+ JSON.stringify(msg))
+    console.log("[+] Received info on "+ topic +":"+ JSON.stringify(msgObject))
   }
 })
 
@@ -40,9 +50,9 @@ const registerSensorListener = (fn) => {
 const setTemperature = (level, room='room-1') => {
   const topic = HEATING_TOPIC + room
   console.log('Setting temperature of '+ room +' to '+ level + '['+ topic +']')
-  mqttClient.publish(topic, {
+  mqttClient.publish(topic, JSON.stringify({
     level
-  }.toString())
+  }))
 }
 
 
