@@ -4,7 +4,8 @@
   "description": "Using mqtt topics, keep the temperature of a room below X",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node tester.js"
   },
   "author": "Mickael Goubin",
   "license": "ISC",

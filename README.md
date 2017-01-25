@@ -47,3 +47,31 @@ Once I calculated what I estimated to be the room temperature, I decided to work
 ## Calculating the room temperature
 ## Defining the valve openness
 ## Unit testing
+
+
+# Running the project
+To run the project, nothing easier. You either need to have node installed or run it in a docker.
+
+```
+npm install # Install dependencies
+vi config.json # Set your own config.json (see below)
+npm start # Run the program
+node tester.js # Run the tester file
+```
+
+## Config.json
+An example of a config.json file would be the following:
+
+```
+{
+  "mqtt": {
+    "host": "localhost",
+    "port": 1883
+  }
+}
+```
+## Running nodejs inside a docker container
+```
+docker run -ti -v `pwd`:/app -w /app node npm install && npm start # Run the application
+docker run -ti -v `pwd`:/app -w /app node npm install && node tester.js # Run the small tester module
+```
