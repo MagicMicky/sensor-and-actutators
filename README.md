@@ -42,6 +42,13 @@ Next, I worked on the sensors. I wanted to have a way to calculate the room temp
 
 Once I calculated what I estimated to be the room temperature, I decided to work on the valve openness and how to react to room temperature changes.
 
+## Project files :
+ * **bus.js**: The file that is used to interact with the mqtt bus.
+ * **config.json**: the config file (see below)
+ * **index.js**: the main file of this project that interacts with bus.js and radiator.js
+ * **radiator.js**: the radiator modeling file.
+ * **tester.js**: a simple program used to test and send sensor data into the bus, and see the radiator's reaction.
+
 # Improvements
 A lot of improvements could be made to this application to be less trivial, and be more adapted to real use cases.
 ## Databases and machine learning
