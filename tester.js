@@ -25,6 +25,9 @@ mqttClient.on('message', (topic, msg) => {
 
 mqttClient.on('connect', () => {
   setTimeout(() => {
+    setSensorTemp("sensor-1", 0)
+  }, 1000)
+  setTimeout(() => {
     setSensorTemp("sensor-1", 10)
   }, 1000)
 

@@ -47,9 +47,9 @@ const registerSensorListener = (fn) => {
   }
 }
 
-const setTemperature = (level, room='room-1') => {
+const setValveOpenness = (level, room='room-1') => {
   const topic = HEATING_TOPIC + room
-  console.log('Setting temperature of '+ room +' to '+ level + '['+ topic +']')
+  console.log('Setting Valve openness of '+ room +' to '+ level + ' ['+ topic +']')
   mqttClient.publish(topic, JSON.stringify({
     level
   }))
@@ -58,6 +58,6 @@ const setTemperature = (level, room='room-1') => {
 
 module.exports = {
   registerSensorListener,
-  setTemperature,
+  setValveOpenness,
 }
 

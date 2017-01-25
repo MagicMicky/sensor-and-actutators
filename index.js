@@ -1,7 +1,6 @@
 const bus = require('./bus')
 const config = require('./config')
-
-const TEMPERATURE = 22
+const radiator = require('./radiator')
 
 const sensors = new Map()
 
@@ -20,6 +19,7 @@ const temperatureMean = (sensors) => {
 const temperatureUpdated = () => {
   const roomTemperature = temperatureMean(sensors)
   console.log("Room temperature", roomTemperature)
+  bus.setValveOpenness(radiator.getValveOpenness(roomTemperature))
 }
 
 
