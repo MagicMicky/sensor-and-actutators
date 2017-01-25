@@ -3,20 +3,29 @@ const config = require('./config')
 
 const TEMPERATURE = 22
 
+const sensors = new Map()
 
 
-const dealWithSensor =({sensorId, type, value}) => {
-  console.log("Received info",sensorId, type, value)
+const temperatureMean = (sensors) => {
+  let sum = 0;
+  sensors.forEach((value, sensor) => {
+    sum+=value
+  })
+  return sum/sensors.size;
+}
+
+
+//This function is called every time there is an update about the temperature.
+//Different temperatures are stored in the sensors Map, and this is what it needs to work with.
+const temperatureUpdated = () => {
+  const roomTemperature = temperatureMean(sensors)
+  console.log("Room temperature", roomTemperature)
+}
+
+
+const dealWithSensor =({sensorID, type, value}) => {
+  sensors.set(sensorID, value)
+  temperatureUpdated();
 }
 
 bus.registerSensorListener(dealWithSensor)
-
-
-
-setTimeout(() => {
-  bus.setTemperature(100)
-}, 1000)
-
-setTimeout(() => {
-  bus.setTemperature(0)
-}, 2000)
