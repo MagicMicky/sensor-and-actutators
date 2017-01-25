@@ -9,7 +9,7 @@ To ease the development, we define that there is only one radiator (even though 
 
 I decided to work with Javascript, because this is the language I'm currently the more confortable with. I try to work with Javascript using a lot of the functional parts of the language, because it is something that I actually learned to like about Javascript (I'd be glad to talk with you and see what you'd think about functionnal vs object oriented languages!). This is why you'll see a lot of functions, and that I don't use the object's prototype or the *this* keyword.
 
-I thought about working with Golang for this project but thought that it would not represent all of my coding abilities, because I'd wants
+I thought about working with Golang for this project but thought that it would not represent all of my coding abilities, and that I'd first need to read [Effective Go](https://golang.org/doc/effective_go.html) before trying to write good golang code :)
 
 # Project explanation
 The index.js is my main file on this project. It's the one that acts on my sensors and actuators, without even knowing that there is a bus between them.
